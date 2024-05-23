@@ -8,4 +8,8 @@ declare module "next-auth" {
     is_error?: boolean;
     error_message?: string;
   }
+
+  interface Session extends DefaultSession {
+    id: string;
+  }
 }

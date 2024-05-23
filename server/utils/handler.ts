@@ -13,13 +13,14 @@ export const defineWrappedResponseHandler = <T extends EventHandlerRequest, D>(h
       return { ...response, statusCode };
     } catch (err) {
       let statusCode = 500;
-      let message = "Internal Server Error";
+      let message = "Something went wrong. Please try again.";
 
       if (err instanceof CustomAPIError) {
         statusCode = err.statusCode;
         message = err.message;
       } else if (err instanceof Error) {
-        message = err.message;
+        console.log("Error when signup:", err.message);
+        // message = err.message;
       }
 
       setResponseStatus(event, statusCode);

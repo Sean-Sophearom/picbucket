@@ -57,14 +57,27 @@ export default NuxtAuthHandler({
       } catch (err) {
         if (err instanceof CustomAPIError) {
           throw err;
-        } else if (err instanceof Error) {
-          console.log("Error when signing user in:", err.message);
-          throw new InternalServerError("Something went wrong. Please try again.");
+          // } else if (err instanceof Error) {
+          //   console.log("Error when signing user in:", err.message);
+          //   throw new InternalServerError("Something went wrong. Please try again.");
         } else {
           console.log("Error when signing user in:", err);
           throw new InternalServerError("Something went wrong. Please try again.");
         }
       }
+    },
+    async jwt({ token, user }) {
+      if (user?.id) {
+        token.user_id = user.id;
+      }
+      return token;
+    },
+    async session({ session, token }) {
+      if (token.user_id) {
+        session.id = token.user_id as string;
+      }
+
+      return session;
     },
   },
   providers: [

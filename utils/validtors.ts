@@ -4,11 +4,14 @@ import { z } from "zod";
 
 export const userSignupSchema = z.object({
   name: z
-    .string({ message: "Name must be a string.", required_error: "Name is required." })
+    .string({ message: "Username is required." })
     .min(3, "Username must be at least 3 characters long.")
     .max(255, "Username must be at most 255 characters long."),
-  password: z.string().min(8, "Password must be at least 8 characters long.").max(255, "Password must be at most 255 characters long."),
-  email: z.string().email(),
+  password: z
+    .string({ message: "Password is required." })
+    .min(8, "Password must be at least 8 characters long.")
+    .max(255, "Password must be at most 255 characters long."),
+  email: z.string({ message: "Email is required." }).email("Please enter a valid email address.").toLowerCase(),
 });
 
 export const userSigninSchema = userSignupSchema.omit({ name: true });
