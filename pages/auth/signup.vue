@@ -3,9 +3,9 @@
     <title>Sign up to PicBucket</title>
   </Head>
   <UiContainer class="flex min-h-dvh items-center justify-center">
-    <div class="w-full max-w-[340px]">
+    <div class="w-full max-w-[400px]">
       <div class="text-center">
-        <h1 class="text-3xl font-semibold lg:text-4xl">Create an account</h1>
+        <h1 class="text-2xl font-semibold lg:text-3xl">Create an account</h1>
         <p class="mt-2 text-lg text-muted-foreground">Start uploading images today!</p>
       </div>
       <form @submit.prevent="onSubmit" class="mt-10">
@@ -83,7 +83,7 @@ const formFields = [
 const { signIn } = useAuth();
 
 const onSubmit = form.handleSubmit(async (values) => {
-  if (submitError.value) return;
+  // if (submitError.value) return;
 
   try {
     await $fetch("/api/auth/signup", {

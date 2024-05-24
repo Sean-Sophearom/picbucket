@@ -20,6 +20,6 @@ const props = withDefaults(
 );
 
 const styles = tv({
-  base: "container mx-auto",
+  base: "container mx-auto max-w-7xl",
 });
 </script>

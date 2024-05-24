@@ -3,10 +3,10 @@
     <title>Sign in to PicBucket</title>
   </Head>
   <UiContainer class="flex min-h-dvh items-center justify-center">
-    <div class="w-full max-w-[340px]">
+    <div class="w-full max-w-[400px]">
       <div class="text-center">
-        <h1 class="text-3xl font-semibold lg:text-4xl">Welcome Back!</h1>
-        <p class="mt-2 text-lg text-muted-foreground">Sign in to PicBucket</p>
+        <h1 class="text-2xl font-semibold lg:text-3xl">Welcome Back to <UiLogo type="color" underline="yes" />!</h1>
+        <p class="mt-2 text-lg text-muted-foreground">Sign in to your account</p>
       </div>
       <form @submit.prevent="onSubmit" class="mt-10">
         <fieldset :disabled="form.isSubmitting.value" class="grid gap-5">
@@ -82,7 +82,7 @@ const formFields = [
 const { signIn } = useAuth();
 
 const onSubmit = form.handleSubmit(async (values) => {
-  if (submitError.value) return;
+  // if (submitError.value) return;
 
   try {
     const res = await signIn("credentials", {
