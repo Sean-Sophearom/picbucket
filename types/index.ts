@@ -22,3 +22,11 @@ interface OtherProviderUser extends BaseUser {
 }
 
 export type IUser = CredentialsUser | OtherProviderUser;
+
+export interface IImage {
+  name: string;
+  downloadUrl: string;
+  size: number;
+  timeCreated: Date;
+  user?: string;
+}

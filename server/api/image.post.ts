@@ -1,3 +1,5 @@
+const isImage = (file: File) => file.type.startsWith("image/");
+
 export default defineWrappedResponseHandler(async (event) => {
   initFirebase();
 
@@ -6,11 +8,17 @@ export default defineWrappedResponseHandler(async (event) => {
   });
 
   const file = formData.get("file");
-  if (!file || !(file instanceof File)) {
-    throw new BadRequestError("Please provide a file to upload");
+  if (!file || !(file instanceof File) || !isImage(file)) {
+    throw new BadRequestError("Please provide a valid image file to upload");
   }
 
-  const { url } = await uploadImage(file, `images/${file.name}`);
+  const { url, snapshot } = await uploadImage(file, file.name);
+
+  await ImageSchema.create({
+    ...snapshot.metadata,
+    name: file.name,
+    downloadUrl: url,
+  });
 
   return {
     statusCode: HTTPStatusCodes.CREATED,
