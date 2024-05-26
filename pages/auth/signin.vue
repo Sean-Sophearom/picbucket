@@ -3,7 +3,7 @@
     <title>Sign in to PicBucket</title>
   </Head>
   <UiContainer class="flex min-h-dvh items-center justify-center">
-    <div class="w-full max-w-[400px]">
+    <div class="w-full max-w-[420px]">
       <div class="text-center">
         <h1 class="text-2xl font-semibold lg:text-3xl">Welcome Back to <UiLogo type="color" underline="yes" />!</h1>
         <p class="mt-2 text-lg text-muted-foreground">Sign in to your account</p>
