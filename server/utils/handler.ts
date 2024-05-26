@@ -19,7 +19,7 @@ export const defineWrappedResponseHandler = <T extends EventHandlerRequest, D>(h
         statusCode = err.statusCode;
         message = err.message;
       } else if (err instanceof Error) {
-        console.log("Error when signup:", err.message);
+        console.log("Error in API Route:", err.message);
         // message = err.message;
       }
 
