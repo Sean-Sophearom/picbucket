@@ -19,7 +19,7 @@
         <button type="button" @click="() => signOut()">
           <div class="flex items-center">
             <Icon name="uil:signout" class="w-4 h-4 mr-3" />
-            Signout
+            Sign out
           </div>
         </button>
       </UiDropdownMenuItem>
