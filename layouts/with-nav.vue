@@ -1,4 +1,3 @@
 <template>
-  <UiNavbar />
-  <slot />
+  <div><UiNavbar /> <slot /></div>
 </template>
