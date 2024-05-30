@@ -37,6 +37,7 @@
     "@sidebase/nuxt-auth": "^0.7.2",
     "@types/bcrypt": "^5.0.2",
     "@vueuse/nuxt": "^10.9.0",
+    "nuxt-cron": "^1.5.1",
     "nuxt-icon": "^0.6.10",
     "nuxt-mongoose": "^1.0.6",
     "shadcn-nuxt": "^0.10.4",
