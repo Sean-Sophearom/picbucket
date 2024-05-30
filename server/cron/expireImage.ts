@@ -3,7 +3,8 @@ import { defineCronHandler } from "#nuxt/cron";
 export default defineCronHandler("daily", async () => {
   try {
     initFirebase();
-    const expiredImages = await ImageSchema.find({  expireAt: { $lt: new Date() } });
+    await connectDB();
+    const expiredImages = await ImageSchema.find({ expireAt: { $lt: new Date() } });
 
     await Promise.all(expiredImages.map((image) => deleteImage(image.name)));
     await ImageSchema.deleteMany({ expireAt: { $lt: new Date() } });
