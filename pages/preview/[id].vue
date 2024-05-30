@@ -3,7 +3,7 @@
     <div>
       <p class="sm:text-xl text-lg font-medium py-2 text-center">Your image has been uploaded successfully!</p>
       <NuxtImg
-        :src="imageSrc"
+        :src="data?.url"
         alt="preivew image"
         class="mx-auto max-h-[50vh] h-full border-2 rounded border-dashed border-primary/50 p-2"
       />
@@ -56,7 +56,7 @@ const { toast } = useToast();
 const imageSrc = concatImageUrl(imageId);
 const htmlExample = `<img src="${imageSrc}" alt="describe your image" />`;
 
-const { error } = await useFetch(`/api/image/${imageId}`);
+const { data, error, pending } = await useFetch(`/api/image/${imageId}`);
 
 if (error.value) {
   await navigateTo("/404");

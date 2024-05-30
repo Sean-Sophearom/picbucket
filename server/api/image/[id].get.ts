@@ -1,7 +1,7 @@
 export default defineWrappedResponseHandler(async (event) => {
   const imageId = event.context.params?.id as string;
 
-  const image = await ImageSchema.findById(imageId).catch(() => {
+  let image = await ImageSchema.findById(imageId).catch(() => {
     throw new NotFoundError("Image not found");
   });
 
@@ -9,9 +9,18 @@ export default defineWrappedResponseHandler(async (event) => {
     throw new NotFoundError("Image not found");
   }
 
+  while (image.isUploading) {
+    await sleep(1000);
+    image = await ImageSchema.findById(imageId).catch(() => {
+      throw new NotFoundError("Image not found");
+    });
+  }
+
   return {
-    // url: image.downloadUrl,
+    url: image.downloadUrl as string,
     name: image.name,
     statusCode: HTTPStatusCodes.OK,
   };
 });
+
+const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));

@@ -1,6 +1,7 @@
 import { getServerSession } from "#auth";
 import { autoDeleteInOptions } from "~/utils/constant";
 import { imageUploadSchema } from "~/utils/validtors";
+import mongoose from "mongoose";
 
 export default defineWrappedResponseHandler(async (event) => {
   initFirebase();
@@ -43,18 +44,30 @@ export default defineWrappedResponseHandler(async (event) => {
   }
 
   const validatedFile = validated.data;
-  const { url, snapshot } = await uploadImage(validatedFile, validatedFile.name);
+
+  const imageId = new mongoose.Types.ObjectId();
+
+  uploadImage(validatedFile, validatedFile.name).then(async ({ snapshot, url }) => {
+    await ImageSchema.findByIdAndUpdate(imageId, {
+      downloadUrl: url,
+      size: snapshot.metadata.size,
+      timeCreated: snapshot.metadata.timeCreated,
+      name: snapshot.metadata.name,
+      isUploading: false,
+    });
+  });
 
   const newImage = await ImageSchema.create({
-    ...snapshot.metadata,
-    downloadUrl: url,
+    // ...snapshot.metadata,
+    // downloadUrl: url,
     user: user_id,
     expireAt,
+    _id: imageId,
   });
 
   return {
     message: "Image uploaded successfully",
-    id: newImage._id,
+    id: imageId.toString(),
     statusCode: HTTPStatusCodes.CREATED,
   };
 });

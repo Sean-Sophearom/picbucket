@@ -30,4 +30,5 @@ export interface IImage {
   timeCreated: Date;
   user?: string;
   expireAt: Date;
+  isUploading: boolean;
 }
