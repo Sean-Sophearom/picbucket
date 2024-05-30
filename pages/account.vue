@@ -57,4 +57,10 @@ const userImage = data.value?.image as string;
 const userInitial = computed(() => username.charAt(0).toUpperCase() + (username.split(" ")?.[1]?.charAt(0)?.toUpperCase() || ""));
 const userEmail = data.value?.email as string;
 const images = data.value?.images as string[];
+
+useHead({
+  title() {
+    return `${username}'s Profile`;
+  }
+})
 </script>

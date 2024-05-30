@@ -22,17 +22,6 @@ const isAuthenticated = computed(() => status.value === "authenticated");
 
 definePageMeta({
   layout: "with-nav",
+  
 });
-const { toast } = useToast();
-
-const handleSignout = async () => {
-  await signOut({
-    redirect: false,
-  });
-
-  toast({
-    title: "Signed out",
-    description: "You have been signed out",
-  });
-};
 </script>

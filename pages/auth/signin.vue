@@ -1,7 +1,4 @@
 <template>
-  <Head>
-    <title>Sign in to PicBucket</title>
-  </Head>
   <UiContainer class="flex min-h-dvh items-center justify-center">
     <div class="w-full max-w-[420px]">
       <div class="text-center">
@@ -54,6 +51,10 @@ definePageMeta({
   auth: {
     unauthenticatedOnly: true,
   },
+});
+
+useHead({
+  title: "Sign In",
 });
 
 const submitError = ref<string | null>(null);

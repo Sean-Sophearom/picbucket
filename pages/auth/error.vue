@@ -1,7 +1,4 @@
 <template>
-  <Head>
-    <title>Error | PicBucket</title>
-  </Head>
   <UiContainer class="flex items-center justify-center pt-4">
     <div class="w-full max-w-[380px]">
       <UiNotfoundSVG class="h-[300px] w-[300px] mx-auto" />
@@ -23,6 +20,10 @@ definePageMeta({
   auth: {
     unauthenticatedOnly: true,
   },
+});
+
+useHead({
+  title: "Error",
 });
 
 const { error } = useRoute().query;

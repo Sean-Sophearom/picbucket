@@ -46,6 +46,10 @@
 </template>
 
 <script lang="ts" setup>
+useHead({
+  title: "Image Preview",
+});
+
 const router = useRoute();
 const imageId = router.params.id as string;
 const { toast } = useToast();
