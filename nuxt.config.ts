@@ -27,7 +27,7 @@ export default defineNuxtConfig({
     }
   }, 
   cron: {
-    runOnInit: true,
+    runOnInit: false,
   },
   runtimeConfig: {
     public: {
