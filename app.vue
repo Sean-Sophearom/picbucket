@@ -1,7 +1,8 @@
 <template>
-  <div>
-    <NuxtLoadingIndicator />
+  <NuxtLoadingIndicator />
+  <NuxtLayout>
     <NuxtPage />
-    <UiToaster />
-  </div>
+  </NuxtLayout>
+  <UiToaster />
+  <ImageUploaderPopup />
 </template>
