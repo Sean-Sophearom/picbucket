@@ -7,7 +7,6 @@ export default defineNuxtConfig({
     "shadcn-nuxt",
     "@pinia/nuxt",
     "@sidebase/nuxt-auth",
-    "nuxt-mongoose",
     "@nuxt/eslint",
     "@vueuse/nuxt",
     "nuxt-icon",

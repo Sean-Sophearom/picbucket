@@ -18,6 +18,7 @@
     "clsx": "^2.1.1",
     "firebase": "^10.12.1",
     "lucide-vue-next": "^0.378.0",
+    "mongoose": "^8.4.0",
     "next-auth": "4.22.5",
     "nuxt": "^3.11.2",
     "radix-vue": "^1.8.0",
@@ -38,7 +39,6 @@
     "@vueuse/nuxt": "^10.9.0",
     "nuxt-cron": "^1.5.1",
     "nuxt-icon": "^0.6.10",
-    "nuxt-mongoose": "^1.0.6",
     "nuxt-rate-limit": "^1.2.0",
     "shadcn-nuxt": "^0.10.4",
     "tailwind-variants": "^0.2.1"
