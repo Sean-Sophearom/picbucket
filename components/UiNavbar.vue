@@ -5,7 +5,7 @@
     <div class="flex items-center gap-6">
       <div class="underline font-medium"><PricingLink class="hidden sm:block" /></div>
 
-      <NuxtLink v-if="!isAuthenticated" to="/auth/signin">
+      <NuxtLink v-if="!isAuthenticated || isError" to="/auth/signin">
         <UiButton> Sign In </UiButton>
       </NuxtLink>
 
@@ -17,8 +17,11 @@
 <script lang="ts" setup>
 const { status, getSession } = useAuth();
 const isAuthenticated = computed(() => status.value === "authenticated");
+const isError = ref(false);
 
-const sessions = await getSession();
+const sessions = await getSession().catch(() => {
+  isError.value = true;
+})
 
 const userImage = computed(() => sessions?.user?.image || "");
 const username = computed(() => sessions?.user?.name || "");
