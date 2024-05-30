@@ -8,4 +8,5 @@ export const ImageSchema = defineMongooseModel<IImage>("Image", {
   size: { type: Number, required: true },
   timeCreated: { type: Date, required: true },
   user: { type: Schema.Types.ObjectId, required: false, ref: "User" },
+  expireAt: { type: Date, required: true },
 });

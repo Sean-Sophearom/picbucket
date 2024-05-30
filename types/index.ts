@@ -29,4 +29,5 @@ export interface IImage {
   size: number;
   timeCreated: Date;
   user?: string;
+  expireAt: Date;
 }
