@@ -12,7 +12,21 @@ export default defineNuxtConfig({
     "@vueuse/nuxt",
     "nuxt-icon",
     "@formkit/auto-animate",
+    "nuxt-api-shield",
   ],
+  nuxtApiShield: {
+    limit: {
+      max: 21,
+      duration: 30,
+      ban: 2 * 60,
+    },
+    delayOnBan: false,
+  },
+  runtimeConfig: {
+    public: {
+      BASE_URL: process.env.BASE_URL,
+    },
+  },
   auth: { provider: { type: "authjs" } },
   shadcn: {
     prefix: "Ui",
@@ -29,5 +43,12 @@ export default defineNuxtConfig({
       { from: "tailwind-variants", name: "tv" },
       { from: "tailwind-variants", name: "VariantProps", type: true },
     ],
+  },
+  nitro: {
+    storage: {
+      shield: {
+        driver: "memory",
+      },
+    },
   },
 });

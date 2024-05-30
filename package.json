@@ -20,6 +20,7 @@
     "lucide-vue-next": "^0.378.0",
     "next-auth": "4.22.5",
     "nuxt": "^3.11.2",
+    "nuxt-api-shield": "^0.5.0",
     "radix-vue": "^1.8.0",
     "tailwind-merge": "^2.3.0",
     "tailwindcss-animate": "^1.0.7",
