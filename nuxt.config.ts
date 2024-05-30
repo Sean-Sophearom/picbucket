@@ -13,11 +13,11 @@ export default defineNuxtConfig({
     "nuxt-icon",
     "@formkit/auto-animate",
     "nuxt-api-shield",
-    "nuxt-cron"
+    "nuxt-cron",
   ],
   nuxtApiShield: {
     limit: {
-      max: 30,
+      max: 180,
       duration: 30,
       ban: 2 * 60,
     },
@@ -25,7 +25,7 @@ export default defineNuxtConfig({
     errorMessage: "You have made too many requests, please try again in 2 minutes",
   },
   cron: {
-    runOnInit: true
+    runOnInit: true,
   },
   runtimeConfig: {
     public: {
@@ -54,6 +54,12 @@ export default defineNuxtConfig({
       shield: {
         driver: "memory",
       },
+    },
+    experimental: {
+      tasks: true,
+    },
+    scheduledTasks: {
+      "*/10 * * * *": ["shield:clean"], // clean the shield storage every 10 minutes
     },
   },
 });
