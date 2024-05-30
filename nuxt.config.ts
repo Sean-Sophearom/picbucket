@@ -12,18 +12,20 @@ export default defineNuxtConfig({
     "@vueuse/nuxt",
     "nuxt-icon",
     "@formkit/auto-animate",
-    "nuxt-api-shield",
+    "nuxt-rate-limit",
     "nuxt-cron",
   ],
-  nuxtApiShield: {
-    limit: {
-      max: 180,
-      duration: 30,
-      ban: 2 * 60,
-    },
-    delayOnBan: false,
-    errorMessage: "You have made too many requests, please try again in 2 minutes",
-  },
+  nuxtRateLimit: {
+    enabled: true,
+    headers: true,
+    statusMessage: "You have made too many requests. Please try again in :value: seconds.",
+    routes: {
+      '/api/image/': {
+        maxRequests: 3,
+        intervalSeconds: 100,
+      }
+    }
+  }, 
   cron: {
     runOnInit: true,
   },
@@ -48,18 +50,5 @@ export default defineNuxtConfig({
       { from: "tailwind-variants", name: "tv" },
       { from: "tailwind-variants", name: "VariantProps", type: true },
     ],
-  },
-  nitro: {
-    storage: {
-      shield: {
-        driver: "memory",
-      },
-    },
-    experimental: {
-      tasks: true,
-    },
-    scheduledTasks: {
-      "*/10 * * * *": ["shield:clean"], // clean the shield storage every 10 minutes
-    },
   },
 });
