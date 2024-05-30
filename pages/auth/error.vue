@@ -2,9 +2,9 @@
   <Head>
     <title>Error | PicBucket</title>
   </Head>
-  <UiContainer class="flex items-center justify-center min-h-dvh">
+  <UiContainer class="flex items-center justify-center pt-4">
     <div class="w-full max-w-[380px]">
-      <NuxtImg src="/not-found.svg" alt="Error" width="300" height="300" />
+      <UiNotfoundSVG class="h-[300px] w-[300px] mx-auto" />
       <p class="text-center my-8 text-lg font-semibold">{{ error }}</p>
       <NuxtLink to="/auth/signin">
         <UiButton class="w-full mb-2"> Sign In </UiButton>
@@ -18,6 +18,7 @@
 
 <script lang="ts" setup>
 definePageMeta({
+  layout: "with-nav",
   middleware: "auth",
   auth: {
     unauthenticatedOnly: true,
