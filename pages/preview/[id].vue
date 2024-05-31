@@ -11,13 +11,29 @@
 
     <div class="max-w-fit mx-auto w-full">
       <div class="mt-4">
-        <p class="text-lg font-medium">Image URL:</p>
+        <p class="text-lg font-medium">Short URL:</p>
         <div
           class="bg-gray-100 p-2 px-4 group pr-8 rounded text-sm overflow-x-auto relative cursor-pointer"
           @click="copyToClipboard(imageSrc)"
           title="Image URL (click to copy)"
         >
           <pre class="overflow-x-auto">{{ imageSrc }}</pre>
+          <Icon
+            name="ph:clipboard-text"
+            size="16"
+            class="text-gray-500 absolute right-2 top-2 group-hover:opacity-100 opacity-0 duration-100"
+          />
+        </div>
+      </div>
+
+      <div class="mt-4">
+        <p class="text-lg font-medium">Long URL:</p>
+        <div
+          class="bg-gray-100 p-2 px-4 group pr-8 rounded text-sm overflow-x-auto relative cursor-pointer"
+          @click="copyToClipboard(data?.url as string)"
+          title="Image URL (click to copy)"
+        >
+          <pre class="overflow-x-auto">{{ data?.url as string }}</pre>
           <Icon
             name="ph:clipboard-text"
             size="16"
