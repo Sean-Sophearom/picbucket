@@ -1,12 +1,12 @@
 <template>
-  <UiContainer class="flex min-h-dvh items-center justify-center">
+  <UiContainer class="flex justify-center items-center min-h-dvh">
     <div class="w-full max-w-[420px]">
       <div class="text-center">
-        <h1 class="text-2xl font-semibold lg:text-3xl">Create an account</h1>
+        <h1 class="font-semibold text-2xl lg:text-3xl">Create an account</h1>
         <p class="mt-2 text-lg text-muted-foreground">Start uploading images today!</p>
       </div>
       <form @submit.prevent="onSubmit" class="mt-10">
-        <fieldset :disabled="form.isSubmitting.value" class="grid gap-5">
+        <fieldset :disabled="form.isSubmitting.value" class="gap-5 grid">
           <div class="space-y-2">
             <UiFormField v-for="field in formFields" :key="field.name" v-slot="{ componentField }" :name="field.name"
               ><UiFormItem class="space-y-1" v-auto-animate>
@@ -18,24 +18,24 @@
               </UiFormItem>
             </UiFormField>
           </div>
-          <UiAlert v-if="submitError" class="bg-destructive text-white py-3">
+          <UiAlert v-if="submitError" class="bg-destructive py-3 text-white">
             <UiAlertDescription class="flex items-center">
               {{ submitError }}
             </UiAlertDescription>
           </UiAlert>
           <UiButton type="submit" class="w-full"> Create account </UiButton>
           <UiDivider label="or" />
-          <UiButton @click="signUpWithGoogle" type="button" class="w-full flex items-center gap-2" variant="outline">
+          <UiButton @click="signUpWithGoogle" type="button" class="flex items-center gap-2 w-full" variant="outline">
             <Icon name="logos:google-icon" /> Sign up with Google
           </UiButton>
-          <UiButton @click="signUpWithGithub" type="button" class="w-full flex items-center gap-2" variant="outline">
+          <UiButton @click="signUpWithGithub" type="button" class="flex items-center gap-2 w-full" variant="outline">
             <Icon name="logos:github-icon" /> Sign up with Github
           </UiButton>
         </fieldset>
       </form>
       <p class="mt-10 text-center text-sm">
         Already have an account?
-        <NuxtLink class="text-sm font-semibold text-primary hover:underline" to="/auth/signin">Sign in here</NuxtLink>
+        <NuxtLink class="font-semibold text-primary text-sm hover:underline" to="/auth/signin">Sign in here</NuxtLink>
       </p>
     </div>
   </UiContainer>
@@ -104,7 +104,7 @@ const onSubmit = form.handleSubmit(async (values) => {
     }
     // Todo: Redirect to home page and show sonner/toast
   } catch (err: any) {
-    submitError.value = err.data.message!;
+    submitError.value = err.data?.message! || "The system is experiencing high load. Please try again later.";
   }
 });
 
