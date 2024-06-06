@@ -1,7 +1,8 @@
-import mongoose from "mongoose";
+import { defineMongooseModel } from "#nuxt/mongoose";
 import { IUser } from "~/types";
+import { Schema } from "mongoose";
 
-const schema = new mongoose.Schema<IUser>({
+export const User = defineMongooseModel<IUser>("User", {
   name: { type: String, required: true },
   email: { type: String, required: true, unique: true },
   image: String,
@@ -19,5 +20,3 @@ const schema = new mongoose.Schema<IUser>({
     enum: ["credentials", "google", "github"],
   },
 });
-
-export const User = mongoose.models.User || mongoose.model("User", schema);

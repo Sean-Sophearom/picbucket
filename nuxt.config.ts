@@ -13,6 +13,7 @@ export default defineNuxtConfig({
     "@formkit/auto-animate",
     "nuxt-rate-limit",
     "nuxt-cron",
+    "nuxt-mongoose"
   ],
   nuxtRateLimit: {
     enabled: true,

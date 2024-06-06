@@ -4,7 +4,6 @@ export const defineWrappedResponseHandler = <T extends EventHandlerRequest, D>(h
   defineEventHandler<T>(async (event) => {
     try {
       // do something before the route handler
-      await connectDB();
       const response = (await handler(event)) as { statusCode?: number } & D;
 
       // do something after the route handler
